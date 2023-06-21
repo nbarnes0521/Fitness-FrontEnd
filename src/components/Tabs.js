@@ -1,6 +1,15 @@
-import React from "react";
+import React from 'react';
 
-export default function App() {
-    return <h1> APP!! </h1>
+const list = ['Routines', 'Activities', 'Users'];
+
+export default function Tabs() {
+  return (
+    <div style={{ display: 'flex' }}>
+      {list.map((item, index) => (
+        <h2 key={index} style={{ marginLeft: '10px' }}>
+          {item}
+        </h2>
+      ))}
+    </div>
+  );
 }
-
