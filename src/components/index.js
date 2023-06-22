@@ -10,9 +10,39 @@ export default function App() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    console.log(username, password)
+    const registerUser = async () => {
+        try {
+          const response = await fetch(
+            `${BASE_URL}/users/register`, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              user: {
+                username: 'superman27',
+                password: 'krypt0n0rbust'
+              }
+            })
+          });
+          const result = await response.json();
+          // As written below you can log your result
+          // to check what data came back from the above code.
+          console.log(result)
+          return result
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        // console.log(username, password)
+
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <h3> Register  </h3>
             <input 
                 type="text"
